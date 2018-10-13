@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mwono/SDHacks2018.git"
+    "url": "git+https://github.com/hpar1/SDHacks2018.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mwono/SDHacks2018/issues"
+    "url": "https://github.com/hpar1/SDHacks2018/issues"
   },
-  "homepage": "https://github.com/mwono/SDHacks2018#readme",
+  "homepage": "https://github.com/hpar1/SDHacks2018#readme",
   "dependencies": {
     "nodemon": "^1.18.4"
   }
