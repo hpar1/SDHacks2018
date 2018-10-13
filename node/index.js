@@ -1,9 +1,20 @@
-var http = require('http'); // module similar to JS libraries
-var dt = require('./myfirstmodule');
+const express = require('express'); // express.js web application framework for HTTPS requests
+const bodyParser = require('body-parser'); // parse incoming request bodies
 
-http.createServer(function (req, res){
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write("The date and time are currrently: " + dt.myDateTime());
-	res.end('\nHello World!');
-	// added process.env.PORT because Heroku dynamically chooses a port to listen to
-}).listen(process.env.PORT || 8080) // listens for port 8080 and runs when port is accesssed
+const store = require('./store'); // store file will be used to define functions
+
+const app = express();
+app.use(express.static('public')); // ???????????????????????????
+app.use(bodyParser.json());
+
+app.get('/createUser', (req, res) => {
+	store.createUser({
+		//FullName: req.body.FullName
+	})
+	.then((data =>{ res.send(data);})) // 200 is HTTP for successful
+});
+
+// added process.env.PORT because Heroku dynamically chooses a port to listen to
+app.listen(process.env.PORT || 7555, () => {
+	console.log('Server running!');
+});

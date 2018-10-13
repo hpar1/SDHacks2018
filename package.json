@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/hpar1/SDHacks2018#readme",
   "dependencies": {
-    "nodemon": "^1.18.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "knex": "^0.15.2",
+    "nodemon": "^1.18.4",
+    "pg": "^7.5.0",
+    "psql": "0.0.1"
   }
 }
