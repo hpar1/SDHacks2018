@@ -1,4 +1,4 @@
-const knex = require('knex')(require('./psqlconn')); // getting database connection
+const knex = require('knex')(require('./psqlconnheroku')); // getting database connection
 
 module.exports = {
     // create a user with a full name
