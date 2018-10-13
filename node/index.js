@@ -1,12 +1,25 @@
 const express = require('express'); // express.js web application framework for HTTPS requests
 const bodyParser = require('body-parser'); // parse incoming request bodies
+const cors = require('cors'); // allows cross domain requests
 
 const store = require('./store'); // store file will be used to define functions
 
 const app = express();
+app.use(cors());
 app.use(express.static('public')); // ???????????????????????????
 app.use(bodyParser.json());
 
+
+/*const knex = 
+console.log(process.env.PORT); // print port to console
+if(process.env.PORT === undefined){
+    const knex = require('knex')(require('./psqlconn')); // getting database connection
+}
+else{
+    const knex = require('knex')(require('./psqlconnheroku')); // getting database connection
+}
+console.log(knex);
+*/
 app.get('/createUser', (req, res) => {
 	store.createUser({
 		//FullName: req.body.FullName
