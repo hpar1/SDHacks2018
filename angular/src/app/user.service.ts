@@ -10,14 +10,14 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class UserService {
-  databaseURL = 'http://localhost:8080/';
+  databaseURL = 'https://sd-hacks-node.herokuapp.com/createUser';
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getUsers(): Observable<User[]> {
   	return this.http.get<User[]>(this.databaseURL)
-  		.pipe(tap(users => this.log('fetched users')),
-  			catchError(this.handleError<User[]>('getUsers', [])));
+  		.pipe(tap(users => console.log('fetched users'),
+  			catchError(this.handleError<User[]>('getUsers'))));
   }
 
 
