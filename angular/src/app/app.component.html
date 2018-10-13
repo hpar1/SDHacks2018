@@ -2,7 +2,9 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <div id="viewport">
+      <div *ngFor="let user of users">
+        <img [@Accepted]='acc' [src]="user.resume">
+      </div>
+    </div>
 </div>
-<h2 style=text-align:center> Here's a stuff: {{ temp }}</h2>
-<ul>
-</ul>
