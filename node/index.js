@@ -3,6 +3,8 @@ const bodyParser = require('body-parser'); // parse incoming request bodies
 const cors = require('cors'); // allows cross domain requests
 
 const store = require('./store'); // store file will be used to define functions
+const store2 = require('./store2'); // store file will be used to define functions
+
 
 const app = express();
 app.use(cors());
@@ -23,11 +25,25 @@ else{
 }
 console.log(knex);
 */
-app.get('/createUser', (req, res) => {
+app.post('/createUser', (req, res) => {
 	store.createUser({
 		//FullName: req.body.FullName
 	})
 	.then((data =>{ res.send(data);})) // 200 is HTTP for successful/ send back response data
+});
+
+app.post('/recruiterName', (req,res) =>{
+	store2.recruiterName({
+		ID: req.body.ID
+	})
+	.then((data =>{ res.send(data);}))
+});
+
+app.post('/recruiterJobs', (req,res) =>{
+	store2.recruiterJobs({
+		ID: req.body.ID
+	})
+	.then((data =>{ res.send(data);}))
 });
 
 // added process.env.PORT because Heroku dynamically chooses a port to listen to
