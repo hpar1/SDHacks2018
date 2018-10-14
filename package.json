@@ -1,13 +1,30 @@
 {
-  "name": "angular-demo",
+  "name": "sdhacks",
   "version": "0.0.0",
+  "main": "node/index.js",
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hpar1/SDHacks2018.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hpar1/SDHacks2018/issues"
+  },
+  "homepage": "https://github.com/hpar1/SDHacks2018#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
+  },
+  "engines": {
+    "node": "~9.5.0",
+    "npm" : "~6.0.0"
   },
   "private": true,
   "dependencies": {
@@ -25,9 +42,19 @@
     "@types/gapi.client.drive": "^3.0.1",
     "core-js": "^2.5.4",
     "rxjs": "~6.2.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "@angular/cli": "6.25",
+    "@angular/compiler-cli": "^6.1.0",
+      "body-parser": "^1.18.3",
+      "cors": "^2.8.4",
+      "express": "^4.16.4",
+      "knex": "^0.15.2",
+      "nodemon": "^1.18.4",
+      "pg": "^7.5.0",
+      "psql": "0.0.1"
   },
   "devDependencies": {
+    
     "@angular-devkit/build-angular": "~0.8.0",
     "@angular/cli": "~6.2.5",
     "@angular/compiler-cli": "^6.1.0",
