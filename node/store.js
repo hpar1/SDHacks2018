@@ -7,7 +7,7 @@ else{
     *///const knex = require('knex')(require('./psqlconnheroku')); // getting database connection
 //}
 //import {knex} from './index';
-const knex = require('knex')(require('./psqlconn')); // getting database connection
+const knex = require('knex')(require('./psqlconnheroku')); // getting database connection
 const crypto = require('crypto'); // to encrypt password
 //const knex = (process.env.PORT === 'undefined' ? require('knex')(require('./psqlconn')) : require('knex')(require('./psqlconnheroku')));
 //console.log(knex);
