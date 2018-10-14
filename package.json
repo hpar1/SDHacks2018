@@ -15,7 +15,7 @@
   "homepage": "https://github.com/hpar1/SDHacks2018#readme",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node node/index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
