@@ -11,8 +11,10 @@ app.use(cors());
 // Run the app by serving the static files in the dist directory
 app.use(express.static(__dirname + '../angular/dist'));
 //app.use(express.static('public')); // ???????????????????????????
-app.use(bodyParser.json());
-
+//app.use(bodyParser.json());
+app.get('/*', (req, res) => {
+	res.redirect(__dirname + '../angular/dist/index.html')
+});
 //console.log(process.env.PORT);
 //const knex = (process.env.PORT === 'undefined' ? require('knex')(require('./psqlconn')) : require('knex')(require('./psqlconnheroku')));
 //export {knex};
@@ -27,6 +29,7 @@ else{
 }
 console.log(knex);
 */
+/*
 app.post('/loadApplicants', (req, res) => {
 	store.loadApplicants({
 		Position: req.body.Position
@@ -54,7 +57,7 @@ app.post('/results', (req, res) => {
 		Job: req.body.Job
 	})
 	.then((data => {res.send(data);}))
-});
+});*/
 
 // added process.env.PORT because Heroku dynamically chooses a port to listen to
 app.listen(process.env.PORT || 7555, () => {
