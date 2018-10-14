@@ -9,9 +9,12 @@ app.use(cors());
 app.use(express.static('public')); // ???????????????????????????
 app.use(bodyParser.json());
 
-
-/*const knex = 
-console.log(process.env.PORT); // print port to console
+//console.log(process.env.PORT);
+//const knex = (process.env.PORT === 'undefined' ? require('knex')(require('./psqlconn')) : require('knex')(require('./psqlconnheroku')));
+//export {knex};
+//console.log(knex);
+//console.log(knex);
+/*console.log(process.env.PORT); // print port to console
 if(process.env.PORT === undefined){
     const knex = require('knex')(require('./psqlconn')); // getting database connection
 }
@@ -24,7 +27,7 @@ app.get('/createUser', (req, res) => {
 	store.createUser({
 		//FullName: req.body.FullName
 	})
-	.then((data =>{ res.send(data);})) // 200 is HTTP for successful
+	.then((data =>{ res.send(data);})) // 200 is HTTP for successful/ send back response data
 });
 
 // added process.env.PORT because Heroku dynamically chooses a port to listen to
