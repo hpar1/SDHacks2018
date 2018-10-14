@@ -8,6 +8,7 @@ else{
 //}
 //import {knex} from './index';
 const knex = require('knex')(require('./psqlconn')); // getting database connection
+const crypto = require('crypto'); // to encrypt password
 //const knex = (process.env.PORT === 'undefined' ? require('knex')(require('./psqlconn')) : require('knex')(require('./psqlconnheroku')));
 //console.log(knex);
 module.exports = {
@@ -31,6 +32,65 @@ module.exports = {
                 const nums = Acceptees.Accepted.split(","); // split into array
                 return knex('Applicant').whereIn('ID', nums);
             })
+    },
+    // ID is an email
+    // something wrong: TypeError Undefined is not a function
+    createUser ({ID, password, name, option}){
+        console.log('Add user');
+
+        const {salt, hash} = saltHashPassword({password}); // salt & hash password
+        if(option === 'Recruiter'){
+            let userType = 'Recruiter';
+        }
+        else{
+            let userType = 'Applicant';
+        }
+        return knex(option).where('ID', ID)
+            .then(([foundUser]) => {
+                if(!foundUser){
+                    knex(option).insert({salt, encrypted_password: hash, ID, name})
+                        .then(([newId]) => {
+                            console.log(newId);
+                        })
+                        return {success: true};
+                }
+                else return {success: false};
+            });
+    },
+
+    authenticate({ID, password, option}){
+        console.log('Authenticating user');
+        if(option === 'Recruiter'){
+            let userType = 'Recruiter';
+        }
+        else{
+            let userType = 'Applicant';
+        }
+        // need to make 'Recruiter' into option so it can switch
+        return knex('Recruiter').where('ID', ID)
+            .then(([user]) => {
+                if(!user) return {success: false};
+                const {hash} = saltHashPassword({
+                    password,
+                    salt: user.salt
+                })
+                return {success: hash === user.encrypted_password}
+            });
+        
     }
     
+}
+
+// salt and hash password function
+function saltHashPassword({password, salt = randomString()}){
+    const hash = crypto.createHmac('sha512', salt).update(password);
+    return {
+        salt,
+        hash: hash.digest('hex')
+    }
+}
+
+// creates a random string
+function randomString(){
+    return crypto.randomBytes(4).toString('hex');
 }

@@ -54,6 +54,32 @@ app.post('/results', (req, res) => {
 	.then((data => {res.send(data);}))
 });
 
+app.post('/createUser', (req, res) => {
+	store.createUser({
+		ID: req.body.ID,
+		password: req.body.password,
+		name: req.body.name,
+		option: req.body.option
+	})
+	//.then((data => {res.send(data);}))
+	.then(({success}) => {
+		if(success) res.send({success: 'Success!'});
+		else res.send({success: 'Failed'});
+	})
+});
+
+app.post('/login', (req, res) => {
+	store.authenticate({
+		ID: req.body.ID,
+		password: req.body.password,
+		option: req.body.option
+	})
+	.then(({success}) => {
+		if(success) res.send({success: 'Success!'});
+		else res.send({success: 'Failed'});
+	})
+});
+
 // added process.env.PORT because Heroku dynamically chooses a port to listen to
 app.listen(process.env.PORT || 7555, () => {
 	console.log('Server running!');
