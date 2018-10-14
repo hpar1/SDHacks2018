@@ -25,15 +25,9 @@ else{
 }
 console.log(knex);
 */
-<<<<<<< HEAD
-app.post('/createUser', (req, res) => {
-	store.createUser({
-		//FullName: req.body.FullName
-=======
 app.post('/loadApplicants', (req, res) => {
 	store.loadApplicants({
 		Position: req.body.Position
->>>>>>> 94551817b1a220d74a01cab907e15d29abe2bc6d
 	})
 	.then((data =>{ res.send(data);})) // 200 is HTTP for successful/ send back response data
 });
