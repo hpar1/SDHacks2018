@@ -5,6 +5,7 @@ const cors = require('cors'); // allows cross domain requests
 const store = require('./store'); // store file will be used to define functions
 const store2 = require('./store2'); // store file will be used to define functions
 
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -13,7 +14,7 @@ app.use(express.static(__dirname + '../angular/dist'));
 //app.use(express.static('public')); // ???????????????????????????
 //app.use(bodyParser.json());
 app.get('/*', (req, res) => {
-	res.redirect(__dirname + '../angular/dist/index.html')
+	res.sendFile(path.join(__dirname + '../angular/dist/index.html'))
 });
 //console.log(process.env.PORT);
 //const knex = (process.env.PORT === 'undefined' ? require('knex')(require('./psqlconn')) : require('knex')(require('./psqlconnheroku')));
