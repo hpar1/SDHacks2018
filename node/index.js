@@ -10,11 +10,11 @@ const path = require('path');
 const app = express();
 app.use(cors());
 // Run the app by serving the static files in the dist directory
-app.use(express.static(__dirname + '../angular/dist'));
+app.use(express.static(__dirname + '../angular/dist/frontend'));
 //app.use(express.static('public')); // ???????????????????????????
 //app.use(bodyParser.json());
 app.get('/*', (req, res) => {
-	res.sendFile(path.join(__dirname + '../angular/dist/index.html'))
+	res.sendFile(path.join(__dirname + '../angular/dist/frontend/index.html'))
 });
 //console.log(process.env.PORT);
 //const knex = (process.env.PORT === 'undefined' ? require('knex')(require('./psqlconn')) : require('knex')(require('./psqlconnheroku')));
