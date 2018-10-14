@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-dark" style="text-align: center;">
+    <button (click)="goBack()" class="btn btn-tertiary btn-lg">Go back</button>
+    <ul class="nav justify-content-center">
+    	<li class="nav-item">
+    		<h1 style="color: #FFFFFF">{{ job }}</h1>
+    	</li>
+    </ul>
+</nav>
+
+<table class="table" *ngFor="let user of users">
+	<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">GPA</th>
+			<th scope="col">Graduation Year</th>
+			<th scope="col">Resume</th>
+			<th scope="col">Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">{{ user.name }}</th>
+			<td>{{ user.GPA }}</td>
+			<td>{{ user.gradYear }}</td>
+			<td class="col imag"><img [src]="user.ResumeLink"></td>
+			<td>{{ user.status }}</td>
+		</tr>
+	</tbody>
+</table>

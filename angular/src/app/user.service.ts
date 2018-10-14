@@ -6,6 +6,13 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { User } from './User';
 import { MessageService } from './message.service';
 
+const httpOptions = {
+	headers: new HttpHeaders({
+		'Content-Type': 'application/json',
+		observe: "response" as 'body',
+	})
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +25,18 @@ export class UserService {
   	return this.http.get<User[]>(this.databaseURL)
   		.pipe(tap(users => console.log('fetched users'),
   			catchError(this.handleError<User[]>('getUsers'))));
+  }
+
+  postUsers(users: User[]): Observable<any> {
+  	return this.http.post<User[]>('DatabaseURLHERE', users, httpOptions)
+  		.pipe(
+  			catchError(this.handleError('postUsers', users)));
+  }
+
+  returnToMenu(users: User[]): Observable<any> {
+  	return this.http.post<User[]>('URLHERE', users, httpOptions)
+  		.pipe(
+  			catchError(this.handleError('returnToMenu', users)));
   }
 
 

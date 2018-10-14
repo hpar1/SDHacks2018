@@ -3,4 +3,5 @@ export class User {
 	"GPA": number;
 	"gradYear": number;
 	"name": string;
+	"status": string;
 }

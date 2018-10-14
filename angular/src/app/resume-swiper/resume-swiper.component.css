@@ -1,0 +1,75 @@
+button {
+	margin-left: 10px;
+}
+
+img.Undecided { 
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+	height: 50%;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+}
+
+img.Rejections {
+	position: absolute;
+	-webkit-animation-name: rejected; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .2s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-direction: linear; /* Safari 4.0 - 8.0 */
+    animation-name: rejected;
+    animation-duration: .2s;
+    animation-timing-function: linear;
+	width: 30%;
+	height: 50%;
+	right: 68%;
+}
+
+img.Accepted {
+    position: absolute;
+    -webkit-animation-name: accepted; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .2s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-direction: linear; /* Safari 4.0 - 8.0 */
+    animation-name: accepted;
+    animation-duration: .2s;
+    animation-timing-function: linear;
+	width: 30%;
+	height: 50%;
+	left: 68%;
+}
+
+/* Standard syntax */
+@keyframes rejected {
+    0%   {right:55%;}
+    25%  {right:58%;}
+    50%  {right:61%; }
+    75%  {right:64%;}
+    100% {right:68%;}
+}
+
+/* Safari syntax */
+@-webkit-keyframes rejected {
+    0%   {right:55%;}
+    25%  {right:58%;}
+    50%  {right:61%; }
+    75%  {right:64%;}
+    100% {right:68%;}
+}
+
+/* Standard syntax */
+@keyframes accepted {
+    0%   {left:55%;}
+    25%  {left:58%;}
+    50%  {left:61%; }
+    75%  {left:64%;}
+    100% {left:68%;}
+}
+
+/* Safari syntax */
+@-webkit-keyframes accepted {
+    0%   {left:55%;}
+    25%  {left:58%;}
+    50%  {left:61%; }
+    75%  {left:64%;}
+    100% {left:68%;}
+}

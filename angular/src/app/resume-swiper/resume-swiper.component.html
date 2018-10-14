@@ -1,0 +1,27 @@
+<nav class="navbar navbar-dark bg-dark">
+  <form class="form-inline">
+    <button (click)="goBack()" class="btn btn-tertiary btn-lg">Go back</button>
+    <button (click)="postUsers()" class="btn btn-primary btn-lg" style="position: absolute; margin-left: 45%">Submit</button>
+    <button (click)="undo()" [disabled]="isInvalid()" class="btn btn-secondary btn-lg" style="position: absolute; margin-left: 53%">undo</button>
+  </form>
+</nav>
+
+<div style="text-align:center">
+  <h2>
+    Quota progress: {{ judged }} / {{ quota }}
+  </h2>
+  <h3 *ngIf="selectedUser">
+    {{ selectedUser.name }}'s GPA {{ selectedUser.GPA }} and graduation year {{ selectedUser.gradYear }}
+  </h3>
+  </div>
+  <div class="row">
+      <div *ngFor="let r of rejected">
+        <img class="Rejections" [src]="r.ResumeLink">
+      </div>
+      <div *ngIf="selectedUser as variable">
+        <img class="Undecided" [src]="selectedUser.ResumeLink">
+      </div>
+      <div *ngFor="let a of accepted">
+        <img class="Accepted" [src]="a.ResumeLink">
+      </div>
+  </div>
