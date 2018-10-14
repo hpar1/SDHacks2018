@@ -46,6 +46,14 @@ app.post('/recruiterJobs', (req,res) =>{
 	.then((data =>{ res.send(data);}))
 });
 
+app.post('/results', (req, res) => {
+	store.results({
+		ID: req.body.ID,
+		Job: req.body.Job
+	})
+	.then((data => {res.send(data);}))
+});
+
 // added process.env.PORT because Heroku dynamically chooses a port to listen to
 app.listen(process.env.PORT || 7555, () => {
 	console.log('Server running!');

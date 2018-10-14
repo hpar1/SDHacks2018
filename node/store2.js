@@ -17,7 +17,7 @@
   
   
 
-const knex = require('knex')(require('./psqlconnheroku')); // getting database connection
+const knex = require('knex')(require('./psqlconn')); // getting database connection
 
 
 module.exports = {
