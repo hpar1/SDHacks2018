@@ -1,2 +1,2 @@
 # SDHacks2018
-Maple Syrup
+The Node server code is on this branch.
